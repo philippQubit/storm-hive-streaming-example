@@ -8,7 +8,6 @@ package storm_hive_streaming_example;
 import backtype.storm.Config;
 import backtype.storm.StormSubmitter;
 import backtype.storm.generated.AlreadyAliveException;
-import backtype.storm.generated.AuthorizationException;
 import backtype.storm.generated.InvalidTopologyException;
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.FailedException;
@@ -85,7 +84,7 @@ public class Topology {
         config.setMessageTimeoutSecs(60);
         try {
             StormSubmitter.submitTopology(topologyName, config, builder.createTopology());
-        } catch (AlreadyAliveException | InvalidTopologyException | AuthorizationException ex) {
+        } catch (AlreadyAliveException | InvalidTopologyException ex) {
             Logger.getLogger(Topology.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
